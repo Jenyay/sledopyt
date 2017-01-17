@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">Sledopyt</string>
+    <string name="app_name">Следопыт</string>
+    <string name="sum_numbers">Сумма цифр</string>
+    <string name="alphabet">Алфавит</string>
+    <string name="building_number">Номер дома</string>
+    <string name="building_number_street_text">Название улицы</string>
+    <string name="building_number_equation">Формула номера дома</string>
+    <string name="building_number_result">Номер дома:</string>
+    <string name="calculate_button_text">Рассчитать</string>
 </resources>
