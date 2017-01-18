@@ -27,25 +27,27 @@ public class Calculator {
         ArrayList<Token> opStack = new ArrayList<Token>();
         ArrayList<Token> notation = new ArrayList<Token>();
 
+        boolean startValue = false;
+
         for(char c : equation.toCharArray()) {
             // Letter or digit
             if (Character.isDigit(c) || Character.isLetter(c)) {
-
-                if (notation.size() != 0 &&
-                        notation.get(notation.size() - 1).getType() == Token.Type.VALUE) {
+                if (startValue) {
                     Token lastToken = notation.get(notation.size() - 1);
                     lastToken.setValue(lastToken.getValue() + c);
                 }
                 else {
                     notation.add(new Token(Token.Type.VALUE, String.valueOf(c), -1));
+                    startValue = true;
                 }
 
                 continue;
             }
+            startValue = false;
 
             // Open bracket
             if (c == '(') {
-                opStack.add(new Token(Token.Type.BRACKET_OPEN, String.valueOf(c), 0));
+                opStack.add(0, new Token(Token.Type.BRACKET_OPEN, String.valueOf(c), 0));
             }
 
             // Close bracket
@@ -64,7 +66,7 @@ public class Calculator {
                 continue;
             }
 
-            if ("+-*/".indexOf(c) != -1) {
+            if ("+-*/^".indexOf(c) != -1) {
                 Token op;
                 switch (c) {
                     case '+':
@@ -89,7 +91,7 @@ public class Calculator {
                     notation.add(opStack.get(0));
                     opStack.remove(0);
                 }
-                opStack.add(op);
+                opStack.add(0, op);
                 continue;
             }
         }

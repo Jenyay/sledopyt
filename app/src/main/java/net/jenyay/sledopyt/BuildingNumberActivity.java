@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import net.jenyay.calculator.Calculator;
+import net.jenyay.calculator.FormatException;
 
 import java.util.HashMap;
 
@@ -35,8 +36,14 @@ public class BuildingNumberActivity extends Activity {
                 HashMap<String, Integer> variables = new HashMap<String, Integer>();
                 Calculator calculator = new Calculator(variables);
                 String equation = _equation.getText().toString();
-                int result = calculator.calculate(equation);
-                _result.setText(String.valueOf(result));
+
+                try {
+                    int result = calculator.calculate(equation);
+                    _result.setText(String.valueOf(result));
+                }
+                catch (FormatException e) {
+
+                }
             }
         });
     }

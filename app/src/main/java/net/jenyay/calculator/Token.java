@@ -4,7 +4,7 @@ package net.jenyay.calculator;
  * Created by jenyay on 17.01.17.
  */
 
-class Token {
+public class Token {
 
 
     public enum Type { VALUE, BRACKET_OPEN, OPERATOR }
