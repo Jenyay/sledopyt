@@ -33,12 +33,12 @@ public class BuildingNumberActivity extends Activity {
         _calculateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HashMap<String, Integer> variables = new HashMap<String, Integer>();
+                HashMap<String, Double> variables = new HashMap<>();
                 Calculator calculator = new Calculator(variables);
                 String equation = _equation.getText().toString();
 
                 try {
-                    int result = calculator.calculate(equation);
+                    Double result = calculator.calculate(equation);
                     _result.setText(String.valueOf(result));
                 }
                 catch (FormatException e) {

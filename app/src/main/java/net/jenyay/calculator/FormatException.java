@@ -10,4 +10,8 @@ public class FormatException extends Exception {
     public FormatException(String error) {
         _strError = error;
     }
+
+    public String toString() {
+        return "(FormatException) " + _strError;
+    }
 }

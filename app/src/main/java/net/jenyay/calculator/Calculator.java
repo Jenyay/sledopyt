@@ -9,23 +9,24 @@ import java.util.HashMap;
  */
 
 public class Calculator {
-    private HashMap<String, Integer> _variables;
+    private HashMap<String, Double> _variables;
 
-    public Calculator(HashMap<String, Integer> variables) {
+    public Calculator(HashMap<String, Double> variables) {
         _variables = variables;
     }
 
-    public int calculate(String equation) throws FormatException {
+    public Double calculate(String equation) throws FormatException {
         ArrayList<Token> notation = buildReversePolishNotation(equation);
-
-        return 0;
+        StackMachine machine = new StackMachine(_variables);
+        return machine.execute(notation);
     }
+
 
     public ArrayList<Token> buildReversePolishNotation(String equation) throws FormatException {
         equation = equation.replace(" ", "");
 
-        ArrayList<Token> opStack = new ArrayList<Token>();
-        ArrayList<Token> notation = new ArrayList<Token>();
+        ArrayList<Token> opStack = new ArrayList<>();
+        ArrayList<Token> notation = new ArrayList<>();
 
         boolean startValue = false;
 
@@ -48,6 +49,7 @@ public class Calculator {
             // Open bracket
             if (c == '(') {
                 opStack.add(0, new Token(Token.Type.BRACKET_OPEN, String.valueOf(c), 0));
+                continue;
             }
 
             // Close bracket
@@ -92,7 +94,9 @@ public class Calculator {
                     opStack.remove(0);
                 }
                 opStack.add(0, op);
-                continue;
+            }
+            else {
+                throw new FormatException("Invalid characters in the equation.");
             }
         }
 
