@@ -55,6 +55,14 @@ public class StackMachine {
                 result = mul(stack);
                 stack.push(result);
                 break;
+            case "-":
+                result = diff(stack);
+                stack.push(result);
+                break;
+            case "/":
+                result = div(stack);
+                stack.push(result);
+                break;
             default:
                 throw new FormatException("Unknown operator: " + t.getValue());
         }
@@ -78,6 +86,28 @@ public class StackMachine {
             double y = stack.pop();
             double x = stack.pop();
             return x * y;
+        }
+        catch (EmptyStackException e) {
+            throw new FormatException("Invalid equation");
+        }
+    }
+
+    private Double diff(Stack<Double> stack) throws FormatException {
+        try {
+            double y = stack.pop();
+            double x = stack.pop();
+            return x - y;
+        }
+        catch (EmptyStackException e) {
+            throw new FormatException("Invalid equation");
+        }
+    }
+
+    private Double div(Stack<Double> stack) throws FormatException {
+        try {
+            double y = stack.pop();
+            double x = stack.pop();
+            return x / y;
         }
         catch (EmptyStackException e) {
             throw new FormatException("Invalid equation");

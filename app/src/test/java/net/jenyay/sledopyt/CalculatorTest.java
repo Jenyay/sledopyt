@@ -390,6 +390,54 @@ public class CalculatorTest {
     }
 
     @Test
+    public void calc_diff_01() throws Exception {
+        String equation = "5 - 1";
+        Double result_expected = 4.0;
+
+        HashMap<String, Double> variables = new HashMap<>();
+        Calculator calc = new Calculator(variables);
+        Double result = calc.calculate(equation);
+
+        assertEquals(result_expected, result);
+    }
+
+    @Test
+    public void calc_diff_02() throws Exception {
+        String equation = "5 - 1 - 5";
+        Double result_expected = -1.0;
+
+        HashMap<String, Double> variables = new HashMap<>();
+        Calculator calc = new Calculator(variables);
+        Double result = calc.calculate(equation);
+
+        assertEquals(result_expected, result);
+    }
+
+    @Test
+    public void calc_div_01() throws Exception {
+        String equation = "6 / 2";
+        Double result_expected = 3.0;
+
+        HashMap<String, Double> variables = new HashMap<>();
+        Calculator calc = new Calculator(variables);
+        Double result = calc.calculate(equation);
+
+        assertEquals(result_expected, result);
+    }
+
+    @Test
+    public void calc_div_02() throws Exception {
+        String equation = "6 / 2 / 2";
+        Double result_expected = 1.5;
+
+        HashMap<String, Double> variables = new HashMap<>();
+        Calculator calc = new Calculator(variables);
+        Double result = calc.calculate(equation);
+
+        assertEquals(result_expected, result);
+    }
+
+    @Test
     public void calc_mul_01() throws Exception {
         String equation = "3 * 4";
         Double result_expected = 12.0;
@@ -429,6 +477,66 @@ public class CalculatorTest {
     public void calc_full_02() throws Exception {
         String equation = "(3 + 4) * 2";
         Double result_expected = 14.0;
+
+        HashMap<String, Double> variables = new HashMap<>();
+        Calculator calc = new Calculator(variables);
+        Double result = calc.calculate(equation);
+
+        assertEquals(result_expected, result);
+    }
+
+    @Test
+    public void calc_full_03() throws Exception {
+        String equation = "3 - 4 * 2";
+        Double result_expected = -5.0;
+
+        HashMap<String, Double> variables = new HashMap<>();
+        Calculator calc = new Calculator(variables);
+        Double result = calc.calculate(equation);
+
+        assertEquals(result_expected, result);
+    }
+
+    @Test
+    public void calc_full_04() throws Exception {
+        String equation = "3 - 4 / 2";
+        Double result_expected = 1.0;
+
+        HashMap<String, Double> variables = new HashMap<>();
+        Calculator calc = new Calculator(variables);
+        Double result = calc.calculate(equation);
+
+        assertEquals(result_expected, result);
+    }
+
+    @Test
+    public void calc_sign_01() throws Exception {
+        String equation = "-2";
+        Double result_expected = -2.0;
+
+        HashMap<String, Double> variables = new HashMap<>();
+        Calculator calc = new Calculator(variables);
+        Double result = calc.calculate(equation);
+
+        assertEquals(result_expected, result);
+    }
+
+    @Test
+    public void calc_sign_02() throws Exception {
+        String equation = "(-3 + 4) * 2";
+        Double result_expected = 2.0;
+
+        HashMap<String, Double> variables = new HashMap<>();
+        Calculator calc = new Calculator(variables);
+        Double result = calc.calculate(equation);
+
+        assertEquals(result_expected, result);
+    }
+
+    @Test
+    public void calc_sign_03() throws Exception {
+        String equation = "(3 + 4) * (-2)";
+        Double result_expected = -14.0;
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);

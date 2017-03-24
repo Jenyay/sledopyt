@@ -6,7 +6,6 @@ package net.jenyay.calculator;
 
 public class Token {
 
-
     public enum Type { VALUE, BRACKET_OPEN, OPERATOR }
 
     private Type _type;
@@ -37,6 +36,7 @@ public class Token {
         _priority = priority;
     }
 
+    @Override
     public String toString() {
         return _value;
     }
