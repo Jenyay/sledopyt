@@ -16,17 +16,17 @@ public class Calculator {
     }
 
     public Double calculate(String equation) throws FormatException {
-        ArrayList<Token> notation = buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = buildReversePolishNotation(equation);
         StackMachine machine = new StackMachine(_variables);
         return machine.execute(notation);
     }
 
 
-    public ArrayList<Token> buildReversePolishNotation(String equation) throws FormatException {
+    public ArrayList<TokenOld> buildReversePolishNotation(String equation) throws FormatException {
         equation = equation.replace(" ", "");
 
-        ArrayList<Token> opStack = new ArrayList<>();
-        ArrayList<Token> notation = new ArrayList<>();
+        ArrayList<TokenOld> opStack = new ArrayList<>();
+        ArrayList<TokenOld> notation = new ArrayList<>();
 
         boolean startValue = false;
 
@@ -34,11 +34,11 @@ public class Calculator {
             // Letter or digit
             if (Character.isDigit(c) || Character.isLetter(c)) {
                 if (startValue) {
-                    Token lastToken = notation.get(notation.size() - 1);
+                    TokenOld lastToken = notation.get(notation.size() - 1);
                     lastToken.setValue(lastToken.getValue() + c);
                 }
                 else {
-                    notation.add(new Token(Token.Type.VALUE, String.valueOf(c), -1));
+                    notation.add(new TokenOld(TokenOld.Type.VALUE, String.valueOf(c), -1));
                     startValue = true;
                 }
 
@@ -48,17 +48,17 @@ public class Calculator {
 
             // Open bracket
             if (c == '(') {
-                opStack.add(0, new Token(Token.Type.BRACKET_OPEN, String.valueOf(c), 0));
+                opStack.add(0, new TokenOld(TokenOld.Type.BRACKET_OPEN, String.valueOf(c), 0));
                 continue;
             }
 
             // Close bracket
             if (c == ')') {
                 while (opStack.size() != 0) {
-                    Token op = opStack.get(0);
+                    TokenOld op = opStack.get(0);
                     opStack.remove(0);
 
-                    if (op.getType() != Token.Type.BRACKET_OPEN) {
+                    if (op.getType() != TokenOld.Type.BRACKET_OPEN) {
                         notation.add(op);
                     }
                     else {
@@ -69,20 +69,20 @@ public class Calculator {
             }
 
             if ("+-*/^".indexOf(c) != -1) {
-                Token op;
+                TokenOld op;
                 switch (c) {
                     case '+':
                     case '-':
-                        op = new Token(Token.Type.OPERATOR, String.valueOf(c), 2);
+                        op = new TokenOld(TokenOld.Type.OPERATOR, String.valueOf(c), 2);
                         break;
 
                     case '*':
                     case '/':
-                        op = new Token(Token.Type.OPERATOR, String.valueOf(c), 3);
+                        op = new TokenOld(TokenOld.Type.OPERATOR, String.valueOf(c), 3);
                         break;
 
                     case '^':
-                        op = new Token(Token.Type.OPERATOR, String.valueOf(c), 4);
+                        op = new TokenOld(TokenOld.Type.OPERATOR, String.valueOf(c), 4);
                         break;
 
                     default:

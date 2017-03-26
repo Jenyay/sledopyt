@@ -1,7 +1,7 @@
-package net.jenyay.sledopyt;
+package net.jenyay.sledopyt.calculator;
 
 import net.jenyay.calculator.Calculator;
-import net.jenyay.calculator.Token;
+import net.jenyay.calculator.TokenOld;
 
 import org.junit.Test;
 
@@ -21,7 +21,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -34,7 +34,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -47,7 +47,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -60,7 +60,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -73,7 +73,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -86,7 +86,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -100,7 +100,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -114,7 +114,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -128,7 +128,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -142,7 +142,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -156,7 +156,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -170,7 +170,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -184,7 +184,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -198,7 +198,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -212,7 +212,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -226,7 +226,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -240,7 +240,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -254,7 +254,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -268,7 +268,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -282,7 +282,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -296,7 +296,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -309,7 +309,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -322,7 +322,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -335,7 +335,7 @@ public class CalculatorTest {
 
         HashMap<String, Double> variables = new HashMap<>();
         Calculator calc = new Calculator(variables);
-        ArrayList<Token> notation = calc.buildReversePolishNotation(equation);
+        ArrayList<TokenOld> notation = calc.buildReversePolishNotation(equation);
         String result = notationToString(notation);
 
         assertEquals(result_expected, result);
@@ -545,7 +545,7 @@ public class CalculatorTest {
         assertEquals(result_expected, result);
     }
 
-    private String notationToString(ArrayList<Token> notation) {
+    private String notationToString(ArrayList<TokenOld> notation) {
         String result = "";
         for (int i = 0; i < notation.size(); i++) {
             if (i != 0) {

@@ -4,7 +4,7 @@ package net.jenyay.calculator;
  * Created by jenyay on 17.01.17.
  */
 
-public class Token {
+public class TokenOld {
 
     public enum Type { VALUE, BRACKET_OPEN, OPERATOR }
 
@@ -30,7 +30,7 @@ public class Token {
         this._value = value;
     }
 
-    public Token(Type type, String value, int priority) {
+    public TokenOld(Type type, String value, int priority) {
         _type = type;
         _value = value;
         _priority = priority;

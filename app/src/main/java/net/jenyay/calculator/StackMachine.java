@@ -16,12 +16,12 @@ public class StackMachine {
         _variables = (HashMap<String, Double>)variables.clone();
     }
 
-    public Double execute(ArrayList<Token> reverseNotation)
+    public Double execute(ArrayList<TokenOld> reverseNotation)
             throws FormatException {
         Stack<Double> stack = new Stack<>();
 
-        for(Token t : reverseNotation) {
-            if (t.getType() == Token.Type.VALUE) {
+        for(TokenOld t : reverseNotation) {
+            if (t.getType() == TokenOld.Type.VALUE) {
                 try {
                     Double val = Double.parseDouble(t.getValue());
                     stack.push(val);
@@ -42,7 +42,7 @@ public class StackMachine {
         return stack.pop();
     }
 
-    private Double execOpertor(Token t, Stack<Double> stack)
+    private Double execOpertor(TokenOld t, Stack<Double> stack)
             throws FormatException {
         Double result;
 
