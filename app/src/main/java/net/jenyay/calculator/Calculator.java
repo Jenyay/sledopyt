@@ -1,5 +1,6 @@
 package net.jenyay.calculator;
 
+import net.jenyay.calculator.exceptions.FormatException;
 import net.jenyay.calculator.tokens.Token;
 import net.jenyay.calculator.tokens.TokenBracketLeft;
 import net.jenyay.calculator.tokens.TokenBracketRight;

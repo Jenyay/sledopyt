@@ -1,6 +1,6 @@
 package net.jenyay.calculator.tokens;
 
-import net.jenyay.calculator.FormatException;
+import net.jenyay.calculator.exceptions.FormatException;
 
 import java.util.EmptyStackException;
 import java.util.Stack;

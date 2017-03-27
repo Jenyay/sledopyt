@@ -3,6 +3,7 @@ package net.jenyay.calculator;
 import java.util.LinkedList;
 import java.util.List;
 
+import net.jenyay.calculator.exceptions.FormatException;
 import net.jenyay.calculator.tokens.Token;
 import net.jenyay.calculator.tokens.scanners.TokenScanner;
 import net.jenyay.calculator.tokens.scanners.TokenScannerBracketLeft;
@@ -23,10 +24,10 @@ import net.jenyay.calculator.tokens.scanners.TokenScannerVariable;
  */
 
 public class Scanner {
-    LinkedList<TokenScanner> _scanners;
+    private LinkedList<TokenScanner> _scanners;
 
     public Scanner() {
-        _scanners = new LinkedList();
+        _scanners = new LinkedList<>();
         _scanners.add(new TokenScannerReal());
         _scanners.add(new TokenScannerVariable());
         _scanners.add(new TokenScannerPow());
@@ -41,7 +42,7 @@ public class Scanner {
     }
 
     public List<Token> parse(String text) throws FormatException {
-        LinkedList<Token> result = new LinkedList();
+        LinkedList<Token> result = new LinkedList<>();
         Token prevToken = null;
 
         text = text.trim();

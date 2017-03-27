@@ -1,6 +1,6 @@
 package net.jenyay.sledopyt.calculator;
 
-import net.jenyay.calculator.FormatException;
+import net.jenyay.calculator.exceptions.FormatException;
 import net.jenyay.calculator.Scanner;
 import net.jenyay.calculator.tokens.Token;
 import net.jenyay.calculator.tokens.TokenBracketLeft;

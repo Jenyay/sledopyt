@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import net.jenyay.calculator.Calculator;
-import net.jenyay.calculator.FormatException;
+import net.jenyay.calculator.exceptions.FormatException;
 
 import java.util.HashMap;
 

@@ -1,5 +1,6 @@
 package net.jenyay.calculator;
 
+import net.jenyay.calculator.exceptions.FormatException;
 import net.jenyay.calculator.tokens.Token;
 import net.jenyay.calculator.tokens.TokenOperator;
 import net.jenyay.calculator.tokens.TokenRealNumber;
@@ -7,20 +8,19 @@ import net.jenyay.calculator.tokens.TokenRealNumber;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
-import java.util.EmptyStackException;
 
 /**
  * Created by jenyay on 20.01.17.
  */
 
-public class StackMachine {
+class StackMachine {
     private HashMap<String, Double> _variables;
 
-    public StackMachine(HashMap<String, Double> variables) {
+    StackMachine(HashMap<String, Double> variables) {
         _variables = (HashMap<String, Double>)variables.clone();
     }
 
-    public Double execute(ArrayList<Token> reverseNotation)
+    double execute(ArrayList<Token> reverseNotation)
             throws FormatException {
         Stack<Double> stack = new Stack<>();
 
