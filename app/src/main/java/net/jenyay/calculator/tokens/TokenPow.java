@@ -6,12 +6,12 @@ import java.util.EmptyStackException;
 import java.util.Stack;
 
 /**
- * Created by jenyay on 26.03.17.
+ * Created by jenyay on 27.03.17.
  */
 
-public class TokenDiv extends TokenOperator {
-    public TokenDiv() {
-        super("/", 2);
+public class TokenPow extends TokenOperator {
+    public TokenPow(String operator) {
+        super(operator, 3);
     }
 
     @Override
@@ -19,7 +19,7 @@ public class TokenDiv extends TokenOperator {
         try {
             double y = stack.pop();
             double x = stack.pop();
-            return x / y;
+            return Math.pow(x, y);
         }
         catch (EmptyStackException e) {
             throw new FormatException("Invalid equation");

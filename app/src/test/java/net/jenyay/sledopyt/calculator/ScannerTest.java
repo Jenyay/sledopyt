@@ -7,6 +7,7 @@ import net.jenyay.calculator.tokens.TokenBracketLeft;
 import net.jenyay.calculator.tokens.TokenBracketRight;
 import net.jenyay.calculator.tokens.TokenDiff;
 import net.jenyay.calculator.tokens.TokenDiv;
+import net.jenyay.calculator.tokens.TokenPow;
 import net.jenyay.calculator.tokens.TokenProd;
 import net.jenyay.calculator.tokens.TokenRealNumber;
 import net.jenyay.calculator.tokens.TokenSum;
@@ -270,6 +271,54 @@ public class ScannerTest {
 
         assertTrue(result.get(0) instanceof TokenRealNumber);
         assertTrue(result.get(1) instanceof TokenDiv);
+        assertTrue(result.get(2) instanceof TokenVariable);
+    }
+
+    @Test
+    public void pow_01() throws FormatException {
+        String text = "1 ** 2";
+
+        Scanner scanner = new Scanner();
+        List<Token> result = scanner.parse(text);
+
+        assertTrue(result.get(0) instanceof TokenRealNumber);
+        assertTrue(result.get(1) instanceof TokenPow);
+        assertTrue(result.get(2) instanceof TokenRealNumber);
+    }
+
+    @Test
+    public void pow_02() throws FormatException {
+        String text = "1 ** x5";
+
+        Scanner scanner = new Scanner();
+        List<Token> result = scanner.parse(text);
+
+        assertTrue(result.get(0) instanceof TokenRealNumber);
+        assertTrue(result.get(1) instanceof TokenPow);
+        assertTrue(result.get(2) instanceof TokenVariable);
+    }
+
+    @Test
+    public void pow_03() throws FormatException {
+        String text = "1 ^ 2";
+
+        Scanner scanner = new Scanner();
+        List<Token> result = scanner.parse(text);
+
+        assertTrue(result.get(0) instanceof TokenRealNumber);
+        assertTrue(result.get(1) instanceof TokenPow);
+        assertTrue(result.get(2) instanceof TokenRealNumber);
+    }
+
+    @Test
+    public void pow_04() throws FormatException {
+        String text = "1 ^ x5";
+
+        Scanner scanner = new Scanner();
+        List<Token> result = scanner.parse(text);
+
+        assertTrue(result.get(0) instanceof TokenRealNumber);
+        assertTrue(result.get(1) instanceof TokenPow);
         assertTrue(result.get(2) instanceof TokenVariable);
     }
 

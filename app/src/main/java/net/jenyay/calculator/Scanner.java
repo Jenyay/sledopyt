@@ -9,6 +9,7 @@ import net.jenyay.calculator.tokens.scanners.TokenScannerBracketLeft;
 import net.jenyay.calculator.tokens.scanners.TokenScannerBracketRight;
 import net.jenyay.calculator.tokens.scanners.TokenScannerDiff;
 import net.jenyay.calculator.tokens.scanners.TokenScannerDiv;
+import net.jenyay.calculator.tokens.scanners.TokenScannerPow;
 import net.jenyay.calculator.tokens.scanners.TokenScannerProd;
 import net.jenyay.calculator.tokens.scanners.TokenScannerReal;
 import net.jenyay.calculator.tokens.scanners.TokenScannerSum;
@@ -28,6 +29,7 @@ public class Scanner {
         _scanners = new LinkedList();
         _scanners.add(new TokenScannerReal());
         _scanners.add(new TokenScannerVariable());
+        _scanners.add(new TokenScannerPow());
         _scanners.add(new TokenScannerSum());
         _scanners.add(new TokenScannerDiff());
         _scanners.add(new TokenScannerProd());

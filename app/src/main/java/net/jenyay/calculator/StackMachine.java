@@ -1,5 +1,9 @@
 package net.jenyay.calculator;
 
+import net.jenyay.calculator.tokens.Token;
+import net.jenyay.calculator.tokens.TokenOperator;
+import net.jenyay.calculator.tokens.TokenRealNumber;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
@@ -16,22 +20,18 @@ public class StackMachine {
         _variables = (HashMap<String, Double>)variables.clone();
     }
 
-    public Double execute(ArrayList<TokenOld> reverseNotation)
+    public Double execute(ArrayList<Token> reverseNotation)
             throws FormatException {
         Stack<Double> stack = new Stack<>();
 
-        for(TokenOld t : reverseNotation) {
-            if (t.getType() == TokenOld.Type.VALUE) {
-                try {
-                    Double val = Double.parseDouble(t.getValue());
-                    stack.push(val);
-                }
-                catch (NumberFormatException e) {
-                    throw new FormatException("Invalid value: " + t.getValue());
-                }
+        for(Token t : reverseNotation) {
+            if (t instanceof TokenRealNumber) {
+                stack.push(((TokenRealNumber)t).getDoubleValue());
             }
             else {
-                execOpertor(t, stack);
+                TokenOperator op = (TokenOperator)t;
+                double opResult = op.call(stack);
+                stack.push(opResult);
             }
         }
 
@@ -40,77 +40,5 @@ public class StackMachine {
         }
 
         return stack.pop();
-    }
-
-    private Double execOpertor(TokenOld t, Stack<Double> stack)
-            throws FormatException {
-        Double result;
-
-        switch (t.getValue()) {
-            case "+":
-                result = sum(stack);
-                stack.push(result);
-                break;
-            case "*":
-                result = mul(stack);
-                stack.push(result);
-                break;
-            case "-":
-                result = diff(stack);
-                stack.push(result);
-                break;
-            case "/":
-                result = div(stack);
-                stack.push(result);
-                break;
-            default:
-                throw new FormatException("Unknown operator: " + t.getValue());
-        }
-
-        return result;
-    }
-
-    private Double sum(Stack<Double> stack) throws FormatException {
-        try {
-            double y = stack.pop();
-            double x = stack.pop();
-            return x + y;
-        }
-        catch (EmptyStackException e) {
-            throw new FormatException("Invalid equation");
-        }
-    }
-
-    private Double mul(Stack<Double> stack) throws FormatException {
-        try {
-            double y = stack.pop();
-            double x = stack.pop();
-            return x * y;
-        }
-        catch (EmptyStackException e) {
-            throw new FormatException("Invalid equation");
-        }
-    }
-
-    private Double diff(Stack<Double> stack) throws FormatException {
-        try {
-            double y = stack.pop();
-            double x = stack.pop();
-            return x - y;
-        }
-        catch (EmptyStackException e) {
-            throw new FormatException("Invalid equation");
-        }
-    }
-
-    private Double div(Stack<Double> stack) throws FormatException {
-        try {
-            double y = stack.pop();
-            double x = stack.pop();
-            return x / y;
-        }
-        catch (EmptyStackException e) {
-            throw new FormatException("Invalid equation");
-        }
     }
 }

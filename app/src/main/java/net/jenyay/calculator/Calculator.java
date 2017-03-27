@@ -1,7 +1,16 @@
 package net.jenyay.calculator;
 
+import net.jenyay.calculator.tokens.Token;
+import net.jenyay.calculator.tokens.TokenBracketLeft;
+import net.jenyay.calculator.tokens.TokenBracketRight;
+import net.jenyay.calculator.tokens.TokenOperator;
+import net.jenyay.calculator.tokens.TokenRealNumber;
+import net.jenyay.calculator.tokens.TokenVariable;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Stack;
 
 
 /**
@@ -16,93 +25,51 @@ public class Calculator {
     }
 
     public Double calculate(String equation) throws FormatException {
-        ArrayList<TokenOld> notation = buildReversePolishNotation(equation);
+        ArrayList<Token> notation = buildReversePolishNotation(equation);
         StackMachine machine = new StackMachine(_variables);
         return machine.execute(notation);
     }
 
 
-    public ArrayList<TokenOld> buildReversePolishNotation(String equation) throws FormatException {
-        equation = equation.replace(" ", "");
+    public ArrayList<Token> buildReversePolishNotation(String equation) throws FormatException {
+        Scanner scanner = new Scanner();
+        List<Token> tokens = scanner.parse(equation);
 
-        ArrayList<TokenOld> opStack = new ArrayList<>();
-        ArrayList<TokenOld> notation = new ArrayList<>();
+        Stack<TokenOperator> opStack = new Stack<>();
+        ArrayList<Token> notation = new ArrayList<>();
 
-        boolean startValue = false;
-
-        for(char c : equation.toCharArray()) {
-            // Letter or digit
-            if (Character.isDigit(c) || Character.isLetter(c)) {
-                if (startValue) {
-                    TokenOld lastToken = notation.get(notation.size() - 1);
-                    lastToken.setValue(lastToken.getValue() + c);
-                }
-                else {
-                    notation.add(new TokenOld(TokenOld.Type.VALUE, String.valueOf(c), -1));
-                    startValue = true;
-                }
-
-                continue;
+        for (Token token: tokens) {
+            if (token instanceof TokenRealNumber || token instanceof TokenVariable) {
+                notation.add(token);
             }
-            startValue = false;
-
-            // Open bracket
-            if (c == '(') {
-                opStack.add(0, new TokenOld(TokenOld.Type.BRACKET_OPEN, String.valueOf(c), 0));
-                continue;
+            else if (token instanceof TokenBracketLeft) {
+                opStack.push((TokenBracketLeft)token);
             }
+            else if (token instanceof TokenBracketRight) {
+                while (!opStack.isEmpty()) {
+                    Token op = opStack.pop();
 
-            // Close bracket
-            if (c == ')') {
-                while (opStack.size() != 0) {
-                    TokenOld op = opStack.get(0);
-                    opStack.remove(0);
-
-                    if (op.getType() != TokenOld.Type.BRACKET_OPEN) {
-                        notation.add(op);
-                    }
-                    else {
+                    if (op instanceof TokenBracketLeft) {
                         break;
                     }
+
+                    notation.add(op);
                 }
-                continue;
             }
-
-            if ("+-*/^".indexOf(c) != -1) {
-                TokenOld op;
-                switch (c) {
-                    case '+':
-                    case '-':
-                        op = new TokenOld(TokenOld.Type.OPERATOR, String.valueOf(c), 2);
-                        break;
-
-                    case '*':
-                    case '/':
-                        op = new TokenOld(TokenOld.Type.OPERATOR, String.valueOf(c), 3);
-                        break;
-
-                    case '^':
-                        op = new TokenOld(TokenOld.Type.OPERATOR, String.valueOf(c), 4);
-                        break;
-
-                    default:
-                        throw new FormatException("");
+            else if (token instanceof TokenOperator) {
+                TokenOperator op = (TokenOperator)token;
+                while (!opStack.isEmpty() && opStack.peek().get_priority() >= op.get_priority()) {
+                    notation.add(opStack.pop());
                 }
-
-                while (opStack.size() != 0 && opStack.get(0).getPriority() >= op.getPriority()) {
-                    notation.add(opStack.get(0));
-                    opStack.remove(0);
-                }
-                opStack.add(0, op);
+                opStack.push(op);
             }
             else {
-                throw new FormatException("Invalid characters in the equation.");
+                throw new FormatException("Invalid equation.");
             }
         }
 
         while (opStack.size() != 0) {
-            notation.add(opStack.get(0));
-            opStack.remove(0);
+            notation.add(opStack.pop());
         }
 
         return notation;
