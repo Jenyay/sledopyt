@@ -47,14 +47,19 @@ public class Calculator {
                 opStack.push((TokenBracketLeft)token);
             }
             else if (token instanceof TokenBracketRight) {
+                boolean success = false;
                 while (!opStack.isEmpty()) {
                     Token op = opStack.pop();
 
                     if (op instanceof TokenBracketLeft) {
+                        success = true;
                         break;
                     }
 
                     notation.add(op);
+                }
+                if (!success) {
+                    throw new FormatException("Invalid braces");
                 }
             }
             else if (token instanceof TokenOperator) {

@@ -1,6 +1,7 @@
 package net.jenyay.sledopyt.calculator;
 
 import net.jenyay.calculator.Calculator;
+import net.jenyay.calculator.exceptions.FormatException;
 import net.jenyay.calculator.tokens.Token;
 
 import org.junit.Test;
@@ -591,6 +592,96 @@ public class CalculatorTest {
         Double result = calc.calculate(equation);
 
         assertEquals(result_expected, result);
+    }
+
+    @Test(expected = FormatException.class)
+    public void invalid_01() throws FormatException {
+        String equation = "()";
+
+        HashMap<String, Double> variables = new HashMap<>();
+        Calculator calc = new Calculator(variables);
+        calc.calculate(equation);
+    }
+
+    @Test(expected = FormatException.class)
+    public void invalid_02() throws FormatException {
+        String equation = "1+";
+
+        HashMap<String, Double> variables = new HashMap<>();
+        Calculator calc = new Calculator(variables);
+        calc.calculate(equation);
+    }
+
+    @Test(expected = FormatException.class)
+    public void invalid_03() throws FormatException {
+        String equation = "1+2)";
+
+        HashMap<String, Double> variables = new HashMap<>();
+        Calculator calc = new Calculator(variables);
+        calc.calculate(equation);
+    }
+
+    @Test(expected = FormatException.class)
+    public void invalid_04() throws FormatException {
+        String equation = "1+2(";
+
+        HashMap<String, Double> variables = new HashMap<>();
+        Calculator calc = new Calculator(variables);
+        calc.calculate(equation);
+    }
+
+    @Test(expected = FormatException.class)
+    public void invalid_05() throws FormatException {
+        String equation = "(1+2";
+
+        HashMap<String, Double> variables = new HashMap<>();
+        Calculator calc = new Calculator(variables);
+        calc.calculate(equation);
+    }
+
+    @Test(expected = FormatException.class)
+    public void invalid_06() throws FormatException {
+        String equation = "(1+2))";
+
+        HashMap<String, Double> variables = new HashMap<>();
+        Calculator calc = new Calculator(variables);
+        calc.calculate(equation);
+    }
+
+    @Test(expected = FormatException.class)
+    public void invalid_07() throws FormatException {
+        String equation = "1++2";
+
+        HashMap<String, Double> variables = new HashMap<>();
+        Calculator calc = new Calculator(variables);
+        calc.calculate(equation);
+    }
+
+    @Test(expected = FormatException.class)
+    public void invalid_08() throws FormatException {
+        String equation = "1+/2";
+
+        HashMap<String, Double> variables = new HashMap<>();
+        Calculator calc = new Calculator(variables);
+        calc.calculate(equation);
+    }
+
+    @Test(expected = FormatException.class)
+    public void invalid_09() throws FormatException {
+        String equation = "1+2 5";
+
+        HashMap<String, Double> variables = new HashMap<>();
+        Calculator calc = new Calculator(variables);
+        calc.calculate(equation);
+    }
+
+    @Test(expected = FormatException.class)
+    public void invalid_10() throws FormatException {
+        String equation = "((1+2)";
+
+        HashMap<String, Double> variables = new HashMap<>();
+        Calculator calc = new Calculator(variables);
+        calc.calculate(equation);
     }
 
     private String notationToString(ArrayList<Token> notation) {
