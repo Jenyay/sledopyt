@@ -7,4 +7,6 @@
     <string name="building_number_equation">Формула номера дома</string>
     <string name="building_number_result">Номер дома:</string>
     <string name="calculate_button_text">Рассчитать</string>
+    <string name="calculator_format_error">Ошибка выражения</string>
+    <string name="calculator_unknown_variable">Неизвестная переменная</string>
 </resources>
