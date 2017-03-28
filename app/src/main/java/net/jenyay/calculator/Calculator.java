@@ -1,5 +1,6 @@
 package net.jenyay.calculator;
 
+import net.jenyay.calculator.exceptions.CalculatorException;
 import net.jenyay.calculator.exceptions.FormatException;
 import net.jenyay.calculator.tokens.Token;
 import net.jenyay.calculator.tokens.TokenBracketLeft;
@@ -25,7 +26,7 @@ public class Calculator {
         _variables = variables;
     }
 
-    public Double calculate(String equation) throws FormatException {
+    public Double calculate(String equation) throws CalculatorException {
         ArrayList<Token> notation = buildReversePolishNotation(equation);
         StackMachine machine = new StackMachine(_variables);
         return machine.execute(notation);
