@@ -189,4 +189,31 @@ public class BuildingCalculatorTest {
         BuildingCalculator calc = new BuildingCalculator();
         calc.calculate(equation, streetName);
     }
+
+    @Test(expected = FormatException.class)
+    public void invalid_format_06() throws CalculatorException {
+        String streetName = "Крылатская";
+        String equation = ".";
+
+        BuildingCalculator calc = new BuildingCalculator();
+        calc.calculate(equation, streetName);
+    }
+
+    @Test(expected = FormatException.class)
+    public void invalid_format_07() throws CalculatorException {
+        String streetName = "Крылатская";
+        String equation = "";
+
+        BuildingCalculator calc = new BuildingCalculator();
+        calc.calculate(equation, streetName);
+    }
+
+    @Test(expected = FormatException.class)
+    public void invalid_format_08() throws CalculatorException {
+        String streetName = "Крылатская";
+        String equation = "";
+
+        BuildingCalculator calc = new BuildingCalculator();
+        calc.calculate(equation, streetName);
+    }
 }

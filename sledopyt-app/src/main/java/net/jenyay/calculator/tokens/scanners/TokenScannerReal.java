@@ -22,8 +22,13 @@ public class TokenScannerReal implements TokenScanner {
         Token nextToken = null;
         Matcher realMatcher = _realPattern.matcher(text);
         boolean findReal = realMatcher.find();
-        if (findReal && realMatcher.group().length() != 0 && realMatcher.group() != ".") {
-            nextToken = new TokenRealNumber(realMatcher.group());
+        try {
+            if (findReal) {
+                nextToken = new TokenRealNumber(realMatcher.group());
+            }
+        }
+        catch (NumberFormatException e) {
+
         }
 
         return nextToken;

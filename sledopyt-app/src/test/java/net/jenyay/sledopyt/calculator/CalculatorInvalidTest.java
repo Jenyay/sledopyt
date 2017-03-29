@@ -102,4 +102,31 @@ public class CalculatorInvalidTest {
         Calculator calc = new Calculator(variables);
         calc.calculate(equation);
     }
+
+    @Test(expected = FormatException.class)
+    public void invalid_11() throws CalculatorException {
+        String equation = ".";
+
+        HashMap<String, Double> variables = new HashMap<>();
+        Calculator calc = new Calculator(variables);
+        calc.calculate(equation);
+    }
+
+    @Test(expected = FormatException.class)
+    public void invalid_12() throws CalculatorException {
+        String equation = ",";
+
+        HashMap<String, Double> variables = new HashMap<>();
+        Calculator calc = new Calculator(variables);
+        calc.calculate(equation);
+    }
+
+    @Test(expected = FormatException.class)
+    public void invalid_13() throws CalculatorException {
+        String equation = "";
+
+        HashMap<String, Double> variables = new HashMap<>();
+        Calculator calc = new Calculator(variables);
+        calc.calculate(equation);
+    }
 }
