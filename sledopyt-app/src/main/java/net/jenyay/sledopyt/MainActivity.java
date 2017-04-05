@@ -10,7 +10,6 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     private Button _sumNumbersBtn;
-    private Button _alphabetBtn;
     private Button _buildingNumberBtn;
 
     @Override
@@ -27,9 +26,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        // Алфавит
-        _alphabetBtn = (Button) findViewById(R.id.alphabet);
 
         // Расчет номера дома
         _buildingNumberBtn = (Button) findViewById(R.id.building_number);

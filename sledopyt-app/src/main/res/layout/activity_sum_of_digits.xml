@@ -11,12 +11,12 @@
     <TextView
         android:id="@+id/digits"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="100dp"
         android:layout_alignParentTop="true"
         android:ems="10"
         android:inputType="textMultiLine"
-        android:textColor="@android:color/holo_green_dark"
-        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
         tools:text="1+2+3+5+9+0+5+5+8+8+1+3+6" />
 
     <TextView
@@ -30,7 +30,7 @@
         android:inputType="textPersonName"
         android:text="0"
         android:textAlignment="center"
-        android:textColor="@android:color/holo_green_dark"
+        android:textColor="@android:color/black"
         android:textSize="40sp"
         tools:text="200" />
 
