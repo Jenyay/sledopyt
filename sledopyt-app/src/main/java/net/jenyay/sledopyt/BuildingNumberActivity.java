@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -14,7 +12,6 @@ import net.jenyay.calculator.exceptions.CalculatorException;
 import net.jenyay.calculator.exceptions.FormatException;
 import net.jenyay.calculator.exceptions.UnknownVariableException;
 
-import java.util.HashMap;
 
 /**
  * Created by jenyay on 16.01.17.
